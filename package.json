@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "axios": "^0.24.0",
     "next": "11.1.2",
     "node-sass": "^5.0.0",
     "react": "17.0.2",
