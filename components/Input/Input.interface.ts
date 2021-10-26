@@ -1,4 +1,5 @@
 export interface IProps {
   type: 'text' | 'password',
-  placeholder?: string,
+  placeholder?: string, 
+  setData: React.Dispatch<React.SetStateAction<string>>,
 }
