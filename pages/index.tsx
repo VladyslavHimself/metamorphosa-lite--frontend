@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { Auth } from '../components/Auth/Auth';
-import { Wrapper } from '../containers/Wrapper/Wrapper';
+import { Auth } from '../src/components/Auth/Auth';
+import { Wrapper } from '../src/containers/Wrapper/Wrapper';
 
 const Home: NextPage = () : JSX.Element => {
   return (

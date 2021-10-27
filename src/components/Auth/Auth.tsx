@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Button } from '../Button/Button';
 import { Input } from '../Input/Input';
 import classes from './Auth.module.scss';
@@ -15,13 +15,17 @@ export const Auth = (): JSX.Element => {
     const LOGIN_API = 'https://www.mcteaparty.fun/api/metamorph/auth/login';
     console.log('logging...');
 
+    function writeDataToLocalStorage() {
+      
+    }
+
     const response = await axios.post(LOGIN_API, {
       "email": emailInput,
       "password": passwordInput
     }).then((data) => {
       console.log(data);
     }).catch((e) => {
-      console.log('Cannot access data from server...');
+      e.response.data.statusCode ? console.log('Invalid password') : undefined;
     });
   };
 
