@@ -2,31 +2,27 @@ import React, { useState } from 'react';
 import { Button } from '../Button/Button';
 import { Input } from '../Input/Input';
 import classes from './Auth.module.scss';
-
-import axios from 'axios';
-
+import { AuthAPI } from '../../services/AuthAPI/AuthAPI.service';
+import { useRouter } from 'next/dist/client/router';
 
 export const Auth = (): JSX.Element => {
 
   const [emailInput, setEmailInput] = useState<string>('');
   const [passwordInput, setPasswordInput] = useState<string>('');
-  
+
+  const router = useRouter();
+
   const onButtonClickHandler = async (): Promise<void> => {
-    const LOGIN_API = 'https://www.mcteaparty.fun/api/metamorph/auth/login';
-    console.log('logging...');
+    const auth = new AuthAPI();
 
-    function writeDataToLocalStorage() {
-      
-    }
-
-    const response = await axios.post(LOGIN_API, {
-      "email": emailInput,
-      "password": passwordInput
-    }).then((data) => {
-      console.log(data);
-    }).catch((e) => {
-      e.response.data.statusCode ? console.log('Invalid password') : undefined;
+    const isAuthSuccess = await auth.auth({
+      email: emailInput,
+      password: passwordInput
     });
+
+    if (isAuthSuccess) {
+      router.push('/planner');
+    }
   };
 
   return (
@@ -37,15 +33,15 @@ export const Auth = (): JSX.Element => {
       <hr />
       <div className={classes['auth__inputField']}>
         <Input
-         type='text'
-         placeholder='E-mail'
-         setData={setEmailInput}
+          type='text'
+          placeholder='E-mail'
+          setData={setEmailInput}
         />
 
         <Input
-         type='password'
-         placeholder='Password'
-         setData={setPasswordInput}
+          type='password'
+          placeholder='Password'
+          setData={setPasswordInput}
         />
 
       </div>
