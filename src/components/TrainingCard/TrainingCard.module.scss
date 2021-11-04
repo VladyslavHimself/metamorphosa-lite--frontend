@@ -1,0 +1,25 @@
+.trainingCard {
+  position: relative;
+
+  width: 300px;
+  height: 90px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #ccc;
+  cursor: pointer;
+
+  margin-top: 10px;
+
+  &__remove {
+    position: absolute;
+    top: 10%;
+    left: 95%;
+    transform: translate(-95%, -10%);
+
+    font-size: 12px;
+    color: #333;
+  }
+}
