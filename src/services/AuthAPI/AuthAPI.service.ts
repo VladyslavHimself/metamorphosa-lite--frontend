@@ -6,7 +6,7 @@ export class AuthAPI {
   private readonly _url: string;
 
   constructor() {
-    this._url = 'https://www.mcteaparty.fun/api/metamorph/auth/login';
+    this._url = 'https://meta.mcteaparty.fun/api/auth/login';
   };
 
   /**

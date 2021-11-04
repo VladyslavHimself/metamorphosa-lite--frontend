@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { TrainingDayGroup, TrainingList } from '../src/components/TrainingList/TrainingList';
 import { Wrapper } from '../src/containers/Wrapper/Wrapper';
 
-const Planner: NextPage = (): JSX.Element => {
+const Trainings: NextPage = (): JSX.Element => {
 
   const [isAuthorized, setIsAuthorized] = useState<boolean>(false);
 
@@ -32,4 +32,4 @@ const Planner: NextPage = (): JSX.Element => {
 };
 
 
-export default Planner;
+export default Trainings;

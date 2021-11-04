@@ -21,7 +21,7 @@ export const Auth = (): JSX.Element => {
     });
 
     if (isAuthSuccess) {
-      router.push('/planner');
+      router.push('/trainings');
     }
   };
 
