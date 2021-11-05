@@ -19,21 +19,14 @@ export const TrainingList = () => {
     callback();
   }, []);
 
-  const displayList = () => {
-    console.log(trainingList)
-    
-  }
-
   return (
     <div className={classes.trainingList}>
       <AddTraining />
       <hr />
-      
+
       {
         trainingList.map((training: ITraining) => {
-          return (
-            <TrainingCard key={training.id} displayDate={training.date} />
-          )
+          return <TrainingCard key={training.id} displayDate={training.date} />
         })
       }
       

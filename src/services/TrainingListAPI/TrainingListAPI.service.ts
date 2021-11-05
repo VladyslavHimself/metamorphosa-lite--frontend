@@ -22,6 +22,14 @@ export class TrainingListAPI {
   }
 
 
+  /**
+   * name
+   */
+  public name() {
+    
+  }
+
+
   private _getTokenFromLocalStorage() {
     return localStorage.getItem('token');
   }

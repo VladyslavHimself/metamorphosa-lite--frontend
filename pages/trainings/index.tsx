@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import React, { useEffect, useState } from 'react'
-import { TrainingDayGroup, TrainingList } from '../src/components/TrainingList/TrainingList';
-import { Wrapper } from '../src/containers/Wrapper/Wrapper';
+import { TrainingDayGroup, TrainingList } from '../../src/components/TrainingList/TrainingList';
+import { Wrapper } from '../../src/containers/Wrapper/Wrapper';
 
 const Trainings: NextPage = (): JSX.Element => {
 
