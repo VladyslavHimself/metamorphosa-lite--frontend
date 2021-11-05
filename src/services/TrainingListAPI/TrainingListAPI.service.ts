@@ -40,10 +40,25 @@ export class TrainingListAPI {
    */
   public async removeTraining(trainingId: number) {
     try {
-      await axios.delete(`https://meta.mcteaparty.fun/api/trainings/${trainingId}`, this._config);
+      await axios.delete(`${this._serverLink}/trainings/${trainingId}`, this._config);
       console.log('deleted');
     } catch (error) {
       throw new Error('Can\'t delete training from server!');
+    }
+  }
+
+  /**
+   * createNewTraining
+   */
+  public async createNewTraining() {
+    const _data = {
+      "excercises": []
+    };
+
+    try {
+      await axios.post(`${this._serverLink}/trainings`, _data, this._config);
+    } catch (error) {
+      throw new Error('Can\'t create new training!');
     }
   }
 
