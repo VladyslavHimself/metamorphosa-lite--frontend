@@ -2,23 +2,24 @@ import axios from "axios";
 
 export class TrainingListAPI {
 
-  private _config = {
+  private readonly _serverLink = 'https://meta.mcteaparty.fun/api';
+  private readonly _config = {
     headers: {
       Authorization: `Bearer ${this._getTokenFromLocalStorage()}`
     }
-  }
+  };
+
   /**
    * get training list from server
    */
   public async getTrainingList() {
-
     try {
-      const response = await axios.get('https://meta.mcteaparty.fun/api/trainings', this._config);
+      const response = await axios.get(`${this._serverLink}/trainings`, this._config);
       return response.data;
     } catch (error) {
       console.error('can\'t receive training list data from server!')
     }
-  }
+  };
 
 
   /**
@@ -26,17 +27,16 @@ export class TrainingListAPI {
    */
   public async getExcercisesFromTraining(trainingId: number) {
     try {
-      const response = await axios.get(`https://meta.mcteaparty.fun/api/excercises/${trainingId}`, this._config);
+      const response = await axios.get(`${this._serverLink}/excercises/${trainingId}`, this._config);
       return response.data;
 
     } catch (error) {
       throw new Error('Can\'t get excercises from server! ');
     }
-  }
+  };
 
 
   private _getTokenFromLocalStorage() {
     return localStorage.getItem('token');
-  }
-  
+  };
 };
