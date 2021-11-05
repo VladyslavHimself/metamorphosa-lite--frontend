@@ -25,6 +25,7 @@ const Training: NextPage = () => {
     <div>
 
         {
+          excercises.length > 0 ? 
           excercises.map(excercise => {
             return (
               <div key={excercise.id}>
@@ -33,7 +34,7 @@ const Training: NextPage = () => {
                 <p>weight: {excercise.weight}</p>
               </div>
             )
-          })
+          }) : <h1>You dont have this excercise</h1>
         }
 
     </div>
