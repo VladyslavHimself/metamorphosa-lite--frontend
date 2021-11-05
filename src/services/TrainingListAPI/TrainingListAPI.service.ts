@@ -2,19 +2,18 @@ import axios from "axios";
 
 export class TrainingListAPI {
 
+  private _config = {
+    headers: {
+      Authorization: `Bearer ${this._getTokenFromLocalStorage()}`
+    }
+  }
   /**
    * get training list from server
    */
   public async getTrainingList() {
 
-    const config = {
-      headers: {
-        Authorization: `Bearer ${this._getTokenFromLocalStorage()}`
-      }
-    }
-
     try {
-      const response = await axios.get('https://meta.mcteaparty.fun/api/trainings', config);
+      const response = await axios.get('https://meta.mcteaparty.fun/api/trainings', this._config);
       return response.data;
     } catch (error) {
       console.error('can\'t receive training list data from server!')
@@ -23,10 +22,16 @@ export class TrainingListAPI {
 
 
   /**
-   * name
+   * get excercises from training list 
    */
-  public name() {
-    
+  public async getExcercisesFromTraining(trainingId: number) {
+    try {
+      const response = await axios.get(`https://meta.mcteaparty.fun/api/excercises/${trainingId}`, this._config);
+      return response.data;
+
+    } catch (error) {
+      throw new Error('Can\'t get excercises from server! ');
+    }
   }
 
 
