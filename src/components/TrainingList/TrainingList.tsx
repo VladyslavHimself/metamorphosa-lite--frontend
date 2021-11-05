@@ -8,16 +8,17 @@ export const TrainingList = () => {
 
   const [trainingList, setTrainingList] = useState([]);
 
-  const tList = new TrainingListAPI();
+  
 
   useEffect(() => {
+    const tList = new TrainingListAPI();
     const callback = async () => {
       const response = await tList.getTrainingList();
       setTrainingList(response);
     };
 
     callback();
-  }, []);
+  }, [trainingList]);
 
   return (
     <div className={classes.trainingList}>
@@ -26,7 +27,7 @@ export const TrainingList = () => {
 
       {
         trainingList.map((training: ITraining) => {
-          return <TrainingCard key={training.id} displayDate={training.date} />
+          return <TrainingCard key={training.id} displayDate={training.date} id={training.id}  setTrainingList={setTrainingList}/>
         })
       }
       

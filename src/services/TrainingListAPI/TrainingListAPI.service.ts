@@ -35,6 +35,17 @@ export class TrainingListAPI {
     }
   };
 
+  /**
+   * removeTraining
+   */
+  public async removeTraining(trainingId: number) {
+    try {
+      await axios.delete(`https://meta.mcteaparty.fun/api/trainings/${trainingId}`, this._config);
+      console.log('deleted');
+    } catch (error) {
+      throw new Error('Can\'t delete training from server!');
+    }
+  }
 
   private _getTokenFromLocalStorage() {
     return localStorage.getItem('token');

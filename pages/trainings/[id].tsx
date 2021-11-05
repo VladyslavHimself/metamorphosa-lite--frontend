@@ -16,7 +16,7 @@ const Training: NextPage = () => {
       const trainingList = new TrainingListAPI();
       const id: number = +query.id!
       const excercisesData = await trainingList.getExcercisesFromTraining(id);
-      await setExcercises(excercisesData);
+      setExcercises(excercisesData);
     }
     callback();
   }, [router.isReady, query.id]);
