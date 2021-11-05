@@ -19,6 +19,10 @@ const Training: NextPage = () => {
       setExcercises(excercisesData);
     }
     callback();
+
+    return () => {
+      console.log('clean');
+    }
   }, [router.isReady, query.id]);
 
   return (
@@ -26,14 +30,14 @@ const Training: NextPage = () => {
 
         {
           excercises.length > 0 ? 
-          excercises.map(excercise => {
-            return (
-              <div key={excercise.id}>
-                <h1 >Name: {excercise.name}</h1>
-                <p>{excercise.reps} / {excercise.sets}</p>
-                <p>weight: {excercise.weight}</p>
-              </div>
-            )
+            excercises.map(excercise => {
+              return (
+                <div key={excercise.id}>
+                  <h1 >Name: {excercise.name}</h1>
+                  <p>{excercise.reps} / {excercise.sets}</p>
+                  <p>weight: {excercise.weight}</p>
+                </div>
+              )
           }) : <h1>You dont have this excercise</h1>
         }
 
