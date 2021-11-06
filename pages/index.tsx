@@ -17,7 +17,7 @@ const Home: NextPage = (): JSX.Element | any => {
   }, []);
 
   if (isAuthorized) {
-    router.push('/planner');
+    router.push('/trainings');
     return <h1>Redirect...</h1>
 
   } else {

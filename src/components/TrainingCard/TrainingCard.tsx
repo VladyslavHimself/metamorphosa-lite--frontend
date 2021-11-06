@@ -1,28 +1,34 @@
 import { useRouter } from 'next/dist/client/router';
-import React, { useRef } from 'react'
+import React, { Context, ContextType, useContext, useRef } from 'react'
 import { TrainingListAPI } from '../../services/TrainingListAPI/TrainingListAPI.service';
 import classes from './TrainingCard.module.scss';
 
-export const TrainingCard = (props) => {
+interface IProps {
+  id: number, 
+  displayDate: string,
+  setTrainingList: any,
+}
+
+export const TrainingCard = ({id, displayDate, setTrainingList }: IProps) => {
   const removeRef = useRef(null);
   const router = useRouter();
-  const onClickCardHandler = (e) => {
+  const onClickCardHandler = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
 
     const trainingList = new TrainingListAPI();
 
     if(e.target === removeRef.current) {
-      trainingList.removeTraining(props.id);
-      props.setTrainingList([]);
+      trainingList.removeTraining(id);
+      setTrainingList([]);
     } else {
-      console.log('opened previous training', props.id);
-      router.push(`/trainings/${props.id}`)
+      console.log('opened previous training', id);
+      router.push(`/trainings/${id}`)
     }
   }
 
 
   return (
     <div className={classes.trainingCard} onClick={e => onClickCardHandler(e)}>
-        <span>{new Date(props.displayDate).toDateString()}</span>
+        <span>{new Date(displayDate).toDateString()}</span>
         <span className={classes.trainingCard__remove} ref={removeRef}> Remove </span>
     </div>
   )

@@ -1,6 +1,7 @@
 import { NextPage } from 'next';
 import { useRouter } from 'next/dist/client/router';
 import React, { useEffect, useState } from 'react'
+import { ExcerciseList } from '../../src/components/ExcerciseList/ExcerciseList';
 import { TrainingListAPI } from '../../src/services/TrainingListAPI/TrainingListAPI.service';
 import { IExcercise } from '../../src/types/IExcercise.interface';
 
@@ -27,20 +28,7 @@ const Training: NextPage = () => {
 
   return (
     <div>
-
-        {
-          excercises.length > 0 ? 
-            excercises.map(excercise => {
-              return (
-                <div key={excercise.id}>
-                  <h1 >Name: {excercise.name}</h1>
-                  <p>{excercise.reps} / {excercise.sets}</p>
-                  <p>weight: {excercise.weight}</p>
-                </div>
-              )
-          }) : <h1>You dont have this excercise</h1>
-        }
-
+      <ExcerciseList excercises={excercises} query={query}/>
     </div>
   )
 };

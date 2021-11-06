@@ -8,15 +8,12 @@ export const TrainingList = () => {
 
   const [trainingList, setTrainingList] = useState([]);
 
-  
-
   useEffect(() => {
     const tList = new TrainingListAPI();
     const callback = async () => {
       const response = await tList.getTrainingList();
       setTrainingList(response);
     };
-
     callback();
   }, [trainingList]);
 
