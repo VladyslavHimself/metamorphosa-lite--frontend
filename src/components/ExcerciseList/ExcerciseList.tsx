@@ -13,7 +13,7 @@ export const ExcerciseList = ({ excercises, query }: any) => {
     const callback = async () => {
       const tList = new TrainingListAPI();
       const response = await tList.getTrainingList();
-      response.map(e => {
+      response.map((e: { id: number; date: string; }) => {
        if (e.id == query.id) {
         setCurrentId(e.date);
        }

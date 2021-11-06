@@ -5,8 +5,7 @@ import { Auth } from '../src/components/Auth/Auth';
 import { Wrapper } from '../src/containers/Wrapper/Wrapper';
 import { useRouter } from 'next/dist/client/router';
 
-const Home: NextPage = (): JSX.Element | any => {
-
+const Home: NextPage = (): JSX.Element => {
   const router = useRouter();
   const [isAuthorized, setIsAuthorized] = useState<boolean>(false);
 
