@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Button } from '../Button/Button';
 import { Input } from '../Input/Input';
 import classes from './Auth.module.scss';
 import { AuthAPI } from '../../services/AuthAPI/AuthAPI.service';
 import { useRouter } from 'next/dist/client/router';
 
-export const Auth = (): JSX.Element => {
+export const Auth: FC = (): JSX.Element => {
 
   const [emailInput, setEmailInput] = useState<string>('');
   const [passwordInput, setPasswordInput] = useState<string>('');
-
   const router = useRouter();
 
   const onButtonClickHandler = async (): Promise<void> => {

@@ -6,7 +6,7 @@ import classes from './TrainingCard.module.scss';
 interface IProps {
   id: number, 
   displayDate: string,
-  setTrainingList: any,
+  setTrainingList: React.Dispatch<React.SetStateAction<{date: string; id: number;}[] | undefined>>,
 }
 
 export const TrainingCard = ({id, displayDate, setTrainingList }: IProps) => {

@@ -1,11 +1,9 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { IProps } from './Button.interface';
 import classes from './Button.module.scss';
 
-export const Button = ({ value, onClickHandler }: IProps ) => {
-  return (
-    <button className={classes.button} onClick={onClickHandler}>
-      {value}
-    </button>
-  );
-};
+export const Button: FC<any> = ({ value, onClickHandler }: IProps ) => (
+  <button className={classes.button} onClick={onClickHandler}>
+    {value}
+  </button>
+);

@@ -1,9 +1,8 @@
 import React from 'react'
-import { IExcerciseCard } from '../../types/ExcerciseCard.interface';
-
+import { IExcercise } from '../../services/ExcerciseListAPI/ExcerciseList.interface';
 import classes from './ExcerciseCard.module.scss';
 
-export const ExcerciseCard = ({name, reps, sets, weight}: IExcerciseCard) => {
+export const ExcerciseCard = ({name, reps, sets, weight}: IExcercise) => {
   return (
     <div className={classes['excercise-card']}>
       <div className={classes['excercise-card__name']}>{name}</div>

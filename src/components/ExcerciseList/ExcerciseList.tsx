@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { IExcercise } from '../../services/ExcerciseListAPI/ExcerciseList.interface';
 import { TrainingListAPI } from '../../services/TrainingListAPI/TrainingListAPI.service';
-import { IExcerciseCard } from '../../types/ExcerciseCard.interface';
 import { ExcerciseCard } from '../ExcerciseCard/ExcerciseCard';
 import classes from './ExcerciseList.module.scss';
 
-export const ExcerciseList = ({ excercises, query }: any) => {
+export const ExcerciseList: FC = ({ excercises, query }: any) => {
 
   
   const [currentId, setCurrentId] = useState<any>();
@@ -37,6 +36,7 @@ export const ExcerciseList = ({ excercises, query }: any) => {
                   reps={excercise.reps}
                   sets={excercise.sets}
                   weight={excercise.weight}
+                  isCreate={excercise.isCreate}
                 />
               )
             }) : <p>You dont have any excercises here :)</p>

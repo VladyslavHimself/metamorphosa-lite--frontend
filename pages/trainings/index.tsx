@@ -9,26 +9,23 @@ const Trainings: NextPage = (): JSX.Element => {
   const [isAuthorized, setIsAuthorized] = useState<boolean>(false);
 
   const PlannerTmpl = (
-    
     <>
-    <Head>
-      <title>Metamorpohosa Lite</title>
-      <meta name="description" content="A lite version of metamorphosa" />
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
-    <Wrapper mode='development'>
-      <div className="planner">
-        <TrainingList />
-      </div>
-    </Wrapper>
+      <Head>
+        <title>Metamorpohosa Lite</title>
+        <meta name="description" content="A lite version of metamorphosa" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <Wrapper mode='development'>
+        <div className="planner">
+          <TrainingList />
+        </div>
+      </Wrapper>
     </>
   )
 
-
   useEffect(() => {
-    if(localStorage.getItem('token')) {
-      setIsAuthorized(true);
-    } 
+    if(localStorage.getItem('token')) setIsAuthorized(true);
   }, []);
 
   if (isAuthorized) {
