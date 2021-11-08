@@ -1,11 +1,20 @@
+import { NextPage } from 'next';
+import { useRouter } from 'next/dist/client/router';
+
 import React, { FC, useEffect, useState } from 'react'
 import { IExcercise } from '../../services/ExcerciseListAPI/ExcerciseList.interface';
 import { TrainingListAPI } from '../../services/TrainingListAPI/TrainingListAPI.service';
 import { ExcerciseCard } from '../ExcerciseCard/ExcerciseCard';
 import classes from './ExcerciseList.module.scss';
 
-export const ExcerciseList: FC = ({ excercises, query }: any) => {
+interface IProps {
+  excercises: IExcercise[] | undefined,
+  query: any,
+}
 
+export const ExcerciseList = ({ excercises, query}: IProps) => {
+
+  const router = useRouter();
   
   const [currentId, setCurrentId] = useState<any>();
 
