@@ -11,6 +11,8 @@ export class TrainingListAPI {
   };
 
   /**
+   * Get Training List from server.
+   * 
    * Returns an array, that contains object with id and date of creation.
    * Otherwise returns an Error (temporary)
    */
@@ -27,7 +29,7 @@ export class TrainingListAPI {
   /**
    * get excercises from training list 
    */
-  public async getExcercisesFromTraining(trainingId: number) {
+  public async getExcercisesFromTraining(trainingId: number): Promise<any> {
     try {
       const response = await axios.get(`${this._serverLink}/excercises/${trainingId}`, this._config);
       return response.data;
@@ -38,21 +40,20 @@ export class TrainingListAPI {
   };
 
   /**
-   * removeTraining
+   * Delete training from TrainingList.
    */
-  public async removeTraining(trainingId: number) {
+  public async removeTraining(trainingId: number): Promise<void> {
     try {
       await axios.delete(`${this._serverLink}/trainings/${trainingId}`, this._config);
-      console.log('deleted');
     } catch (error) {
       throw new Error('Can\'t delete training from server!');
     }
   }
 
-  /**
-   * createNewTraining
+  /** 
+   * Create new training.
    */
-  public async createNewTraining() {
+  public async createNewTraining(): Promise<void> {
     const _data = {
       "excercises": []
     };
