@@ -1,5 +1,5 @@
 import { useRouter } from 'next/dist/client/router';
-import React, { Context, ContextType, useContext, useRef } from 'react'
+import React, { useRef } from 'react'
 import { TrainingListAPI } from '../../services/TrainingListAPI/TrainingListAPI.service';
 import classes from './TrainingCard.module.scss';
 

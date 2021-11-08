@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { Excercise } from "./ExcerciseList.interface";
+import { IExcercise } from "./ExcerciseList.interface";
 
 export class ExcerciseListAPI {
   
@@ -15,15 +15,14 @@ export class ExcerciseListAPI {
    * 
    * Returns array of excercises.
    */
-   public async getExcercisesFromTraining(trainingId: number): Promise<Excercise[]> {
+   public async getExcercisesFromTraining(trainingId: number): Promise<IExcercise[]> {
     try {
-      const response: AxiosResponse<Excercise[]> = await axios.get<Excercise[]>(`${this._serverLink}/excercises/${trainingId}`, this._config);
+      const response: AxiosResponse<IExcercise[]> = await axios.get<IExcercise[]>(`${this._serverLink}/excercises/${trainingId}`, this._config);
       return response.data;
     } catch (error) {
       throw new Error('Can\'t get excercises from server! ');
     }
   };
-
 
   private _getTokenFromLocalStorage(): string | null {
     return localStorage.getItem('token');

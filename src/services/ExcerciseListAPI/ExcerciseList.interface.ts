@@ -1,4 +1,4 @@
-export interface Excercise {
+export interface IExcercise {
   id?: number,
   isCreate: string,
   name: string,
