@@ -26,18 +26,7 @@ export class TrainingListAPI {
   };
 
 
-  /**
-   * get excercises from training list 
-   */
-  public async getExcercisesFromTraining(trainingId: number): Promise<any> {
-    try {
-      const response = await axios.get(`${this._serverLink}/excercises/${trainingId}`, this._config);
-      return response.data;
 
-    } catch (error) {
-      throw new Error('Can\'t get excercises from server! ');
-    }
-  };
 
   /**
    * Delete training from TrainingList.

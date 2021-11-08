@@ -1,12 +1,13 @@
 import { NextPage } from 'next';
 import { useRouter } from 'next/dist/client/router';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { ExcerciseList } from '../../src/components/ExcerciseList/ExcerciseList';
-import { TrainingListAPI } from '../../src/services/TrainingListAPI/TrainingListAPI.service';
 import { IExcercise } from '../../src/types/IExcercise.interface';
+import { ExcerciseListAPI } from '../../src/services/ExcerciseListAPI/ExcerciseListAPI.service';
+import { Excercise } from '../../src/services/ExcerciseListAPI/ExcerciseList.interface';
 
 const Training: NextPage = () => {
-  const [excercises, setExcercises] = useState<IExcercise[]>([]);
+  const [excercises, setExcercises] = useState<Excercise[]>();
   const router = useRouter();
   const { query } = router;
   
@@ -14,9 +15,9 @@ const Training: NextPage = () => {
     if (!router.isReady) return;
     
     const callback = async () => {
-      const trainingList = new TrainingListAPI();
+      const excerciseList = new ExcerciseListAPI();
       const id: number = +query.id!
-      const excercisesData = await trainingList.getExcercisesFromTraining(id);
+      const excercisesData = await excerciseList.getExcercisesFromTraining(id);
       setExcercises(excercisesData);
     }
     callback();      

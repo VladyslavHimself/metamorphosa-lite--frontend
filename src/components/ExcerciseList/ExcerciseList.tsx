@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Excercise } from '../../services/ExcerciseListAPI/ExcerciseList.interface';
 import { TrainingListAPI } from '../../services/TrainingListAPI/TrainingListAPI.service';
 import { IExcerciseCard } from '../../types/ExcerciseCard.interface';
 import { ExcerciseCard } from '../ExcerciseCard/ExcerciseCard';
@@ -28,7 +29,7 @@ export const ExcerciseList = ({ excercises, query }: any) => {
       <h4 className={classes['excercise-list__date']}>{new Date(currentId).toDateString()}</h4>
         <div className={classes['excercises-container']}>
           {
-            excercises.length ? excercises.map((excercise: IExcerciseCard) => {
+            excercises && excercises.length ? excercises.map((excercise: Excercise) => {
               return (
                 <ExcerciseCard
                   key={excercise.id}
