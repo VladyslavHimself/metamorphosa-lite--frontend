@@ -2,12 +2,11 @@ import { NextPage } from 'next';
 import { useRouter } from 'next/dist/client/router';
 import React, { useEffect, useState } from 'react';
 import { ExcerciseList } from '../../src/components/ExcerciseList/ExcerciseList';
-import { IExcercise } from '../../src/types/IExcercise.interface';
 import { ExcerciseListAPI } from '../../src/services/ExcerciseListAPI/ExcerciseListAPI.service';
-import { Excercise } from '../../src/services/ExcerciseListAPI/ExcerciseList.interface';
+import { IExcercise } from '../../src/services/ExcerciseListAPI/ExcerciseList.interface';
 
 const Training: NextPage = () => {
-  const [excercises, setExcercises] = useState<Excercise[]>();
+  const [excercises, setExcercises] = useState<IExcercise[]>();
   const router = useRouter();
   const { query } = router;
   
