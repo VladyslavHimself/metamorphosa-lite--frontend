@@ -1,4 +1,5 @@
-import axios from "axios";
+import { ITraining } from './TrainingList.interface';
+import axios, { AxiosResponse } from "axios";
 
 export class TrainingListAPI {
 
@@ -10,14 +11,15 @@ export class TrainingListAPI {
   };
 
   /**
-   * get training list from server
+   * Returns an array, that contains object with id and date of creation.
+   * Otherwise returns an Error (temporary)
    */
-  public async getTrainingList() {
+  public async getTrainingList(): Promise<ITraining[]> {
     try {
-      const response = await axios.get(`${this._serverLink}/trainings`, this._config);
+      const response: AxiosResponse<ITraining[]> = await axios.get<ITraining[]>(`${this._serverLink}/trainings`, this._config);
       return response.data;
     } catch (error) {
-      console.error('can\'t receive training list data from server!')
+      throw new Error('Can\'t receive training list data from server!');
     }
   };
 
@@ -62,7 +64,7 @@ export class TrainingListAPI {
     }
   }
 
-  private _getTokenFromLocalStorage() {
+  private _getTokenFromLocalStorage(): string | null {
     return localStorage.getItem('token');
   };
 };

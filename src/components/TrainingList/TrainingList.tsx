@@ -6,7 +6,7 @@ import { ITraining } from './TrainingList.interface';
 import classes from './TrainingList.module.scss';
 export const TrainingList = () => {
 
-  const [trainingList, setTrainingList] = useState([]);
+  const [trainingList, setTrainingList] = useState<{date: string, id: number}[]>();
 
   useEffect(() => {
     const tList = new TrainingListAPI();
@@ -23,7 +23,7 @@ export const TrainingList = () => {
       <hr />
 
       {
-        trainingList.map((training: ITraining) => {
+        trainingList && trainingList.map((training: ITraining) => {
           return <TrainingCard key={training.id} displayDate={training.date} id={training.id}  setTrainingList={setTrainingList}/>
         })
       }
