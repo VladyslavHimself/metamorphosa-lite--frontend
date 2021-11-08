@@ -19,7 +19,7 @@ const Training: NextPage = () => {
       const excercisesData = await trainingList.getExcercisesFromTraining(id);
       setExcercises(excercisesData);
     }
-    callback();
+    callback();      
 
     return () => {
       console.log('clean');
