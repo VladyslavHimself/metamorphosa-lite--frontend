@@ -4,6 +4,10 @@ import React, { useEffect, useState } from 'react';
 import { ExcerciseList } from '../../src/components/ExcerciseList/ExcerciseList';
 import { ExcerciseListAPI } from '../../src/services/ExcerciseListAPI/ExcerciseListAPI.service';
 import { IExcercise } from '../../src/services/ExcerciseListAPI/ExcerciseList.interface';
+import { Wrapper } from '../../src/containers/Wrapper/Wrapper';
+import { Button } from '../../src/components/Button/Button';
+
+import classes from '../../styles/training.module.scss';
 
 const Training: NextPage = () => {
   const [excercises, setExcercises] = useState<IExcercise[]>();
@@ -27,9 +31,11 @@ const Training: NextPage = () => {
   }, [router.isReady, query.id]);
 
   return (
-    <div>
-      <ExcerciseList excercises={excercises} query={query}/>
-    </div>
+      <div className={classes.training}>
+        <Button> Add new excercise</Button>
+        <hr />
+        <ExcerciseList excercises={excercises} query={query}/>
+      </div>
   )
 };
 

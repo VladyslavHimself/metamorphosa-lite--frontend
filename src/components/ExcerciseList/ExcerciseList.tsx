@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import { useRouter } from 'next/dist/client/router';
 
-import React, { FC, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IExcercise } from '../../services/ExcerciseListAPI/ExcerciseList.interface';
 import { TrainingListAPI } from '../../services/TrainingListAPI/TrainingListAPI.service';
 import { ExcerciseCard } from '../ExcerciseCard/ExcerciseCard';
