@@ -24,19 +24,18 @@ const Training: NextPage = () => {
     setExcercises(excercisesData);
     console.log(excercisesData);
   }
-
-  const convertDateToString = (date: string): string => new Date(date).toDateString();
-
+  
   async function loadDate() {
     const tList = new TrainingListAPI();
       const response = await tList.getTrainingList();
       response.map((e: {id: number, date: string}) => {
        if ('' + e.id === query.id) {
         setTrainingDate(convertDateToString(e.date));
-        
        }
       });
   }
+  
+  const convertDateToString = (date: string): string => new Date(date).toDateString();
 
   useEffect(() => {
     if (!router.isReady) return;
@@ -51,7 +50,11 @@ const Training: NextPage = () => {
 
   return (
       <div className={classes.training}>
-        <span className={classes.training__date}>{trainingDate}</span>
+        <span className={classes.training__date}>
+          {
+          trainingDate === new Date().toDateString() ? 'Today training!' : trainingDate
+          }
+        </span>
         <Button>Add new excercise</Button>
         <hr />
         <ExcerciseList excercises={excercises} />
