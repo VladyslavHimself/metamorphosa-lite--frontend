@@ -20,9 +20,21 @@ export class ExcerciseListAPI {
       const response: AxiosResponse<IExcercise[]> = await axios.get<IExcercise[]>(`${this._serverLink}/excercises/${trainingId}`, this._config);
       return response.data;
     } catch (error) {
-      throw new Error('Can\'t get excercises from server! ');
+      throw new Error('Can\'t get excercises from server!');
     }
   };
+
+
+  /**
+   * Delete excercise from server
+   */
+  public async deleteExcercise(excerciseId: number): Promise<void> {
+    try {
+      await axios.delete(`${this._serverLink}/excercises/${excerciseId}`, this._config);
+    } catch (error) {
+      throw new Error('Can\'t delete excercise from server!');
+    }
+  }
 
   private _getTokenFromLocalStorage(): string | null {
     return localStorage.getItem('token');
