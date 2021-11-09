@@ -45,7 +45,7 @@ export const Auth: FC = (): JSX.Element => {
 
       </div>
 
-      <Button value='LogIn' onClickHandler={onButtonClickHandler} />
+      <Button onClickHandler={onButtonClickHandler} > LogIn </Button>
     </div>
   );
 };
