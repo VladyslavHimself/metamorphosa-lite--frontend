@@ -50,9 +50,7 @@ const Training: NextPage = () => {
   return (
       <div className={classes.training}>
         <span className={classes.training__date}>
-          {
-          new DateAPI().isPresentDay(trainingDate!) ? 'Today\'s training!' : trainingDate
-          }
+          { new DateAPI().isPresentDay(trainingDate!) ? 'Today\'s training!' : trainingDate }
         </span>
         <Button>Add new excercise</Button>
         <hr />
