@@ -5,4 +5,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  &__date {
+    margin-bottom: 20px;
+  }
+
+  hr {
+    width: 250px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+  }
 }
