@@ -9,13 +9,13 @@ import { Button } from '../../src/components/Button/Button';
 
 
 import { TrainingListAPI } from '../../src/services/TrainingListAPI/TrainingListAPI.service';
+import { DateAPI } from '../../src/services/DateAPI/DateAPI.service';
 
 const Training: NextPage = () => {
   const [excercises, setExcercises] = useState<IExcercise[]>();
-  const [trainingDate, setTrainingDate] = useState<any>();
+  const [trainingDate, setTrainingDate] = useState<string>();
   const router = useRouter();
   const { query } = router;
-  
   // #TODO: With useCallback
   async function loadExcercises() {
     const excerciseList = new ExcerciseListAPI();
@@ -30,12 +30,11 @@ const Training: NextPage = () => {
       const response = await tList.getTrainingList();
       response.map((e: {id: number, date: string}) => {
        if ('' + e.id === query.id) {
-        setTrainingDate(convertDateToString(e.date));
+         const date = new DateAPI();
+        setTrainingDate(date.formatDate(e.date));
        }
       });
   }
-  
-  const convertDateToString = (date: string): string => new Date(date).toDateString();
 
   useEffect(() => {
     if (!router.isReady) return;
@@ -52,7 +51,7 @@ const Training: NextPage = () => {
       <div className={classes.training}>
         <span className={classes.training__date}>
           {
-          trainingDate === new Date().toDateString() ? 'Today training!' : trainingDate
+          new DateAPI().isPresentDay(trainingDate!) ? 'Today\'s training!' : trainingDate
           }
         </span>
         <Button>Add new excercise</Button>
