@@ -28,8 +28,8 @@ export const TrainingCard = ({id, displayDate, setTrainingList }: IProps) => {
 
   return (
     <div className={classes.trainingCard} onClick={e => onClickCardHandler(e)}>
-        <span>{new Date(displayDate).toDateString()}</span>
+        <span>{displayDate}</span>
         <span className={classes.trainingCard__remove} ref={removeRef}> Remove </span>
     </div>
-  )
+  );
 };
