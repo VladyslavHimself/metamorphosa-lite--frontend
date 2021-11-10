@@ -1,9 +1,5 @@
 export class DateAPI {
 
-  constructor() {
-
-  }
-
   /**
    * Format to readable date.
    * 
