@@ -30,10 +30,15 @@ const Training: NextPage = () => {
       const response = await tList.getTrainingList();
       response.map((e: {id: number, date: string}) => {
        if ('' + e.id === query.id) {
-         const date = new DateAPI();
+        const date = new DateAPI();
         setTrainingDate(date.formatDate(e.date));
        }
       });
+  }
+
+  const onAddExcerciseHandler = () => {
+    console.log('im done', router.query.id)
+    router.push(`/excercise?id=${router.query.id}`)
   }
 
   useEffect(() => {
@@ -52,7 +57,7 @@ const Training: NextPage = () => {
         <span className={classes.training__date}>
           { new DateAPI().isPresentDay(trainingDate!) ? 'Today\'s training!' : trainingDate }
         </span>
-        <Button>Add new excercise</Button>
+        <Button onClickHandler={onAddExcerciseHandler}>Add new excercise</Button>
         <hr />
         <ExcerciseList excercises={excercises} />
       </div>
