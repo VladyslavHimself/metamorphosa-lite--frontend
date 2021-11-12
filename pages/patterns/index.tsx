@@ -2,6 +2,7 @@ import { NextPage } from 'next';
 import { useRouter } from 'next/dist/client/router';
 import React, { useEffect, useState } from 'react';
 import { PatternsList } from '../../src/components/PatternsList/PatternsList';
+import { Wrapper } from '../../src/containers/Wrapper/Wrapper';
 
 const PatternsListPage: NextPage = () => {
 
@@ -20,8 +21,9 @@ const PatternsListPage: NextPage = () => {
   }, []);
 
   return (
-    <PatternsList trainingId={trainingId}/>
-
+    <Wrapper mode={'development'}>
+      <PatternsList trainingId={trainingId}/>
+    </Wrapper>
   )
 };
 
