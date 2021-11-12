@@ -1,9 +1,9 @@
 import React, { FC, useState } from 'react';
-import { Button } from '../Button/Button';
 import { Input } from '../Input/Input';
 import classes from './Auth.module.scss';
 import { AuthAPI } from '../../services/AuthAPI/AuthAPI.service';
 import { useRouter } from 'next/dist/client/router';
+import { Button } from '../Ui/Button/Button';
 
 export const Auth: FC = (): JSX.Element => {
 
@@ -11,7 +11,7 @@ export const Auth: FC = (): JSX.Element => {
   const [passwordInput, setPasswordInput] = useState<string>('');
   const router = useRouter();
 
-  const onButtonClickHandler = async (): Promise<void> => {
+  const onAuthClickHandler = async (): Promise<void> => {
     const auth = new AuthAPI();
 
     const isAuthSuccess = await auth.auth({
@@ -45,7 +45,7 @@ export const Auth: FC = (): JSX.Element => {
 
       </div>
 
-      <Button onClickHandler={onButtonClickHandler} > LogIn </Button>
+      <Button type='default' onClickHandler={onAuthClickHandler}>Login</Button>
     </div>
   );
 };

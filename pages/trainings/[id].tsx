@@ -5,11 +5,11 @@ import { useRouter } from 'next/dist/client/router';
 import { ExcerciseList } from '../../src/components/ExcerciseList/ExcerciseList';
 import { ExcerciseListAPI } from '../../src/services/ExcerciseListAPI/ExcerciseListAPI.service';
 import { IExcercise } from '../../src/services/ExcerciseListAPI/ExcerciseList.interface';
-import { Button } from '../../src/components/Button/Button';
 
 
 import { TrainingListAPI } from '../../src/services/TrainingListAPI/TrainingListAPI.service';
 import { DateAPI } from '../../src/services/DateAPI/DateAPI.service';
+import { Button } from '../../src/components/Ui/Button/Button';
 
 const Training: NextPage = () => {
   const [excercises, setExcercises] = useState<IExcercise[]>();
@@ -57,7 +57,7 @@ const Training: NextPage = () => {
         <span className={classes.training__date}>
           { new DateAPI().isPresentDay(trainingDate!) ? 'Today\'s training!' : trainingDate }
         </span>
-        <Button onClickHandler={onAddExcerciseHandler}>Add new excercise</Button>
+        <Button type='flat' onClickHandler={onAddExcerciseHandler}>Add new excercise</Button>
         <hr />
         <ExcerciseList excercises={excercises} />
       </div>

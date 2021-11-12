@@ -1,6 +1,5 @@
-import { IUserData } from './IAuth';
-
 import axios from "axios";
+import { IUserData } from './IAuth';
 import APIConfigurator from '../../classes/APIConfigurator';
 
 export class AuthAPI extends APIConfigurator {

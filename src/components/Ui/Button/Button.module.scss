@@ -1,0 +1,24 @@
+.button {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.flat {
+  width: 300px;
+  height: 90px;
+  background-color: #ccc;
+}
+
+.default {
+  width: 200px;
+  height: 50px;
+  background-color: #f4f4f4;
+  color: #333;
+  transition: 1s ease;
+  &:hover {
+    background-color: #ccc;
+  }
+}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { DateAPI } from '../../services/DateAPI/DateAPI.service';
 import { TrainingListAPI } from '../../services/TrainingListAPI/TrainingListAPI.service';
-import { AddTraining } from '../AddTraining/AddTraining';
+import { Button } from '../Ui/Button/Button';
 import { TrainingCard } from '../TrainingCard/TrainingCard';
 import { ITraining } from './TrainingList.interface';
 import classes from './TrainingList.module.scss';
@@ -18,9 +18,14 @@ export const TrainingList = () => {
     callback();
   }, [trainingList]);
 
+  const onAddTrainingHandler = () => {
+    const trainingList = new TrainingListAPI();
+    trainingList.createNewTraining();
+  }
+
   return (
     <div className={classes.trainingList}>
-      <AddTraining />
+      <Button type='flat' onClickHandler={onAddTrainingHandler}>Add new training</Button>
       <hr />
 
       {
