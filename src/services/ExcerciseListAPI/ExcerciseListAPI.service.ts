@@ -1,15 +1,12 @@
 import axios, { AxiosResponse } from "axios";
+import APIConfigurator from "../../classes/APIConfigurator";
 import { IExcercise } from "./ExcerciseList.interface";
 
-export class ExcerciseListAPI {
+export class ExcerciseListAPI extends APIConfigurator {
   
-  private readonly _serverLink = 'https://meta.mcteaparty.fun/api';
-  private readonly _config = {
-    headers: {
-      Authorization: `Bearer ${this._getTokenFromLocalStorage()}`
-    }
-  };
-  
+  constructor() {
+    super();
+  }  
   /**
    * Get excercises from Training, by id.
    * 
@@ -36,7 +33,4 @@ export class ExcerciseListAPI {
     }
   }
 
-  private _getTokenFromLocalStorage(): string | null {
-    return localStorage.getItem('token');
-  };
 }

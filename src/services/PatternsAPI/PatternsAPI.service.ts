@@ -1,14 +1,10 @@
 import { IPattern } from './IPattern';
 import axios, { AxiosResponse } from 'axios';
-export class PatternsAPI {
-  constructor() {};
-
-  private readonly _serverLink = 'https://meta.mcteaparty.fun/api';
-  private readonly _config = {
-    headers: {
-      Authorization: `Bearer ${this._getTokenFromLocalStorage()}`
-    }
-  }
+import APIConfigurator from '../../classes/APIConfigurator';
+export class PatternsAPI extends APIConfigurator {
+  constructor() {
+    super();
+  };
 
   /**
    * getPatternsList
@@ -38,11 +34,6 @@ export class PatternsAPI {
       throw new Error('Can\'t create new pattern!');
     }
   }
-
-  private _getTokenFromLocalStorage(): string | null {
-    return localStorage.getItem('token');
-  };
-
 
   /**
    * deletePattern
