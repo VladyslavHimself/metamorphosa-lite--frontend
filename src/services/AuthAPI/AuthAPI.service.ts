@@ -1,23 +1,21 @@
 import { IUserData } from './IAuth';
 
 import axios from "axios";
+import APIConfigurator from '../../classes/APIConfigurator';
 
-export class AuthAPI {
-  private readonly _url: string;
-
+export class AuthAPI extends APIConfigurator {
   constructor() {
-    this._url = 'https://meta.mcteaparty.fun/api/auth/login';
-  };
+    super();
+  }
 
   /**
    * Authenticate user with server.
    * Returns true, if server response status 200, and false, if response status 401.
    * Otherwise returns new error.
    */
-
   public async auth ({email, password}: IUserData): Promise<boolean> {
     
-    return await axios.post(this._url, {
+    return await axios.post(this._serverLink + '/auth/login', {
       "email": email,
       "password": password
     }).then(data => {
@@ -30,12 +28,7 @@ export class AuthAPI {
       } else if (error.response.status === 400) {
         return false;
       }
-      
       throw new Error('Error in AuthAPI service');
     })
   }
-
-  private _writeTokenToLocalStorage(token: string): void {
-    localStorage.setItem('token', token);
-  };
 }

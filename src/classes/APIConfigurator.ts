@@ -1,7 +1,5 @@
-export default class APIConfigurator {  
-  constructor() {
+export default class APIConfigurator {
 
-  }
   readonly _serverLink = 'https://meta.mcteaparty.fun/api';
   readonly _config = {
     headers: {
@@ -9,7 +7,13 @@ export default class APIConfigurator {
     }
   };
   
+
+
   private _getTokenFromLocalStorage(): string | null {
     return localStorage.getItem('token');
+  };
+
+  _writeTokenToLocalStorage(token: string): void {
+    localStorage.setItem('token', token);
   };
 };
