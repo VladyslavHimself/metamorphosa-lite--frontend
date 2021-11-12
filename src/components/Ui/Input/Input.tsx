@@ -1,13 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { IProps } from './Input.interface';
 import classes from './Input.module.scss';
 
 
-export const Input = ({type, placeholder, setData}: IProps): JSX.Element => {
+export const Input = ({type, placeholder, changeInputState}: IProps): JSX.Element => {
   
-  const onChangeInputHandler = (data: string) => {
-    setData(data);
-  }
+  const onChangeInputHandler = (data: string) => changeInputState(data);
 
   return (
     <input 

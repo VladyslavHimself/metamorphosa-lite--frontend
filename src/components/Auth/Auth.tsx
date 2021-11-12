@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { Input } from '../Input/Input';
+import { Input } from '../Ui/Input/Input';
 import classes from './Auth.module.scss';
 import { AuthAPI } from '../../services/AuthAPI/AuthAPI.service';
 import { useRouter } from 'next/dist/client/router';
@@ -34,13 +34,13 @@ export const Auth: FC = (): JSX.Element => {
         <Input
           type='text'
           placeholder='E-mail'
-          setData={setEmailInput}
+          changeInputState={setEmailInput}
         />
 
         <Input
           type='password'
           placeholder='Password'
-          setData={setPasswordInput}
+          changeInputState={setPasswordInput}
         />
 
       </div>

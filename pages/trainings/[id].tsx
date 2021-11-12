@@ -38,7 +38,7 @@ const Training: NextPage = () => {
 
   const onAddExcerciseHandler = () => {
     console.log('im done', router.query.id)
-    router.push(`/excercise?id=${router.query.id}`)
+    router.push(`/patterns?id=${router.query.id}`)
   }
 
   useEffect(() => {
