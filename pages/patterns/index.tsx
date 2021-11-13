@@ -11,7 +11,6 @@ const PatternsListPage: NextPage = () => {
 
   const grabDataFromRoute = () => {
     const result = router.asPath.split('id=')[1];
-    console.log(typeof result);
     return result;
   }
 
