@@ -31,7 +31,7 @@ export const PatternsList = ({ trainingId }: IProps): JSX.Element => {
   return (
     <div className={classes['patterns-list']}>
       <div className={classes['patterns-list__header']}>
-        <p>Patterns List</p>
+        <p>What excercise do you want to add?</p>
         <Button onClickHandler={onAddNewPatternHandler}  type='text-based'>Add new pattern</Button>
       </div>
       
