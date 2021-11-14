@@ -15,7 +15,7 @@ const AddExcercisePage: NextPage = (): JSX.Element => {
 
   const [excerciseId, setExcerciseId] = useState<number>();
   const [excerciseName, setExcerciseName] = useState<string>('');
-  const [initialId, setInitialId] = useState<string>('');
+  const [initialId, setInitialId] = useState<number>();
 
   const [sets, setSets] = useState<string>('');
   const [reps, setReps] = useState<string>('');
@@ -27,8 +27,7 @@ const AddExcercisePage: NextPage = (): JSX.Element => {
       const {id, name, trainingId} = router.query;
       id && setExcerciseId(+id);
       name && setExcerciseName('' + name);
-      trainingId && setInitialId('' + trainingId);
-
+      trainingId && setInitialId(+trainingId);
     }
   }, [router.isReady, sets])
 
