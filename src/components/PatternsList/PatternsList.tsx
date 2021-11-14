@@ -18,7 +18,7 @@ export const PatternsList = ({ trainingId }: IProps): JSX.Element => {
 
   const onOpenPatternHandler = (id: number, name: string) => {
     console.log('open excercise params by current pattern...', id, name);
-    router.push(`/add-excercise?id=${id}&name=${name}`);
+    router.push(`/add-excercise?id=${id}&name=${name}&trainingId=${trainingId}`);
   }
 
   useEffect(() => {

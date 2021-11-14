@@ -10,8 +10,10 @@ const PatternsListPage: NextPage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    router.query.id && settrainingId('' + router.query.id);
-  }, []);
+    if (router.isReady) {
+      router.query.id && settrainingId('' + router.query.id);
+    }
+  }, [router.isReady]);
 
   return (
     <Wrapper mode={'development'}>
