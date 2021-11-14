@@ -1,3 +1,4 @@
+import { useRouter } from 'next/dist/client/router';
 import React, { useEffect, useState } from 'react';
 import { IPattern } from '../../services/PatternsAPI/IPattern';
 import { PatternsAPI } from '../../services/PatternsAPI/PatternsAPI.service';
@@ -10,13 +11,14 @@ interface IProps {
 
 export const PatternsList = ({ trainingId }: IProps): JSX.Element => {
   const [patternsList, setPatternsList] = useState<IPattern[]>();
-
+  const router = useRouter();
   const onAddNewPatternHandler = () => {
     console.log('add new pattern...');
   }
 
-  const onOpenPatternHandler = () => {
-    console.log('open excercise params by current pattern...');
+  const onOpenPatternHandler = (id: number, name: string) => {
+    console.log('open excercise params by current pattern...', id, name);
+    router.push(`/add-excercise?id=${id}&name=${name}`);
   }
 
   useEffect(() => {
@@ -31,7 +33,7 @@ export const PatternsList = ({ trainingId }: IProps): JSX.Element => {
   return (
     <div className={classes['patterns-list']}>
       <div className={classes['patterns-list__header']}>
-        <p>What excercise do you want to add?</p>
+        <p>What excercise do you want to</p>
         <Button onClickHandler={onAddNewPatternHandler}  type='text-based'>Add new pattern</Button>
       </div>
       
@@ -42,7 +44,7 @@ export const PatternsList = ({ trainingId }: IProps): JSX.Element => {
           return (
             <Button
              key={pattern.id}
-             onClickHandler={onOpenPatternHandler}
+             onClickHandler={() => onOpenPatternHandler(pattern.id, pattern.body.name)}
              type='text-based'
             >
               {pattern.body.name}
