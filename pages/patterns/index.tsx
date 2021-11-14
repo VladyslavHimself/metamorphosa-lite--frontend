@@ -9,14 +9,8 @@ const PatternsListPage: NextPage = () => {
   const [trainingId, settrainingId] = useState<string>('');
   const router = useRouter();
 
-  const grabDataFromRoute = () => {
-    const result = router.asPath.split('id=')[1];
-    return result;
-  }
-
   useEffect(() => {
-    settrainingId(grabDataFromRoute());
-    grabDataFromRoute();
+    router.query.id && settrainingId('' + router.query.id);
   }, []);
 
   return (
