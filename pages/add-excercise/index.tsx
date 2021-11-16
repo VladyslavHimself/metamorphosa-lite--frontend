@@ -45,7 +45,7 @@ const AddExcercisePage: NextPage = (): JSX.Element => {
       "muscleTypes": muscleTypes
     };
 
-    excerciseApi.addExcerciseToTraining();
+    excerciseApi.addExcerciseToTraining(+trainingId!, excercise);
   };
 
   return (

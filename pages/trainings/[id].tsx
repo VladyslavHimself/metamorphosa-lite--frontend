@@ -57,7 +57,7 @@ const Training: NextPage = () => {
         <span className={classes.training__date}>
           { new DateAPI().isPresentDay(trainingDate!) ? 'Today\'s training!' : trainingDate }
         </span>
-        <Button type='flat' onClickHandler={onAddExcerciseHandler}>Add new excercise</Button>
+        <Button type='text-based' onClickHandler={onAddExcerciseHandler}>Add new excercise</Button>
         <hr />
         <ExcerciseList excercises={excercises} />
       </div>
