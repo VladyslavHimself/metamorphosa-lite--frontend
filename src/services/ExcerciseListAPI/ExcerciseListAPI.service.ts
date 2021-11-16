@@ -22,9 +22,9 @@ export class ExcerciseListAPI extends APIConfigurator {
   };
 
   /**
-   * getExcerciseToTraining
+   * addExcerciseToTraining
   */
-  public async getExcerciseToTraining(trainingId: number) {
+  public async addExcerciseToTraining(trainingId: number) {
     try {
       axios.post(`${this._serverLink}/excercises/${trainingId}`, this._config);
     } catch (error) {

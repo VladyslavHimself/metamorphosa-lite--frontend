@@ -29,8 +29,7 @@ const AddExcercisePage: NextPage = (): JSX.Element => {
       const patterns = new PatternsAPI();
       const callback = async () => {
         const _data = await patterns.getPatternById(+id!);
-        await setMuscleTypes(_data.body.muscleTypes);
-        await console.log(muscleTypes);
+        setMuscleTypes(_data.body.muscleTypes);
     }
     callback();
     }
@@ -45,6 +44,8 @@ const AddExcercisePage: NextPage = (): JSX.Element => {
       "weight": +weight,
       "muscleTypes": muscleTypes
     };
+
+    excerciseApi.addExcercise();
   };
 
   return (
