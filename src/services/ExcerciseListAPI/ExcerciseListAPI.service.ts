@@ -24,9 +24,9 @@ export class ExcerciseListAPI extends APIConfigurator {
   /**
    * addExcerciseToTraining
   */
-  public async addExcerciseToTraining(trainingId: number) {
+  public async addExcerciseToTraining(trainingId: number, data: any) {
     try {
-      axios.post(`${this._serverLink}/excercises/${trainingId}`, this._config);
+      axios.post(`${this._serverLink}/excercises/${trainingId}`, data, this._config);
     } catch (error) {
       throw new Error('Can\'t create excercise!');
       
