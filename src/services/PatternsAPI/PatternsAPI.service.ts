@@ -19,6 +19,14 @@ export class PatternsAPI extends APIConfigurator {
   }
 
   /**
+   * getPatternById
+   */
+  public async getPatternById(id: number) {
+    const response: AxiosResponse<IPattern[]> = await axios.get(`${this._serverLink}/pattern/${id}`, this._config);
+    return response.data;
+  }
+
+  /**
    * createNewPattern
    */
   public async createNewPattern(name: string, muscleTypes: string[]): Promise<void> {
