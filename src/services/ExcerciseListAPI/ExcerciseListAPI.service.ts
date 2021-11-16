@@ -21,6 +21,17 @@ export class ExcerciseListAPI extends APIConfigurator {
     }
   };
 
+  /**
+   * getExcerciseToTraining
+  */
+  public async getExcerciseToTraining(trainingId: number) {
+    try {
+      axios.post(`${this._serverLink}/excercises/${trainingId}`, this._config);
+    } catch (error) {
+      throw new Error('Can\'t create excercise!');
+      
+    }
+  }
 
   /**
    * Delete excercise from server
