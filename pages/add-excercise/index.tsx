@@ -1,5 +1,5 @@
 import { NextPage } from 'next';
-import { Router, useRouter } from 'next/dist/client/router';
+import { useRouter } from 'next/dist/client/router';
 import React, { useEffect, useState } from 'react'
 import { Button } from '../../src/components/Ui/Button/Button';
 import { Input } from '../../src/components/Ui/Input/Input';
@@ -7,11 +7,6 @@ import { Wrapper } from '../../src/containers/Wrapper/Wrapper';
 import { ExcerciseListAPI } from '../../src/services/ExcerciseListAPI/ExcerciseListAPI.service';
 import { PatternsAPI } from '../../src/services/PatternsAPI/PatternsAPI.service';
 import classes from '../../styles/AddExcercisePage.module.scss';
-
-interface IQuery {
-  id: number,
-  name: string,
-}
 
 const AddExcercisePage: NextPage = (): JSX.Element => { 
   const router = useRouter();
