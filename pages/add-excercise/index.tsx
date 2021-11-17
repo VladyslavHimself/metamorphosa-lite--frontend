@@ -13,7 +13,8 @@ import classes from '../../styles/AddExcercisePage.module.scss';
 
 const AddExcercisePage: NextPage = (): JSX.Element => { 
   const router = useRouter();
-  const  { name, id, trainingId } = router.query;
+  const { name, id, trainingId } = router.query;
+
   const [sets, setSets] = useState<string>('');
   const [reps, setReps] = useState<string>('');
   const [weight, setWeight] = useState<string>('');
@@ -23,7 +24,8 @@ const AddExcercisePage: NextPage = (): JSX.Element => {
     if (router.isReady) {
       const patterns = new PatternsAPI();
       const callback = async () => {
-        const _data: Promise<IPattern> = await patterns.getPatternById(+id!)
+        // #TODO: fix any type
+        const _data: any = await patterns.getPatternById(+id!)
         .catch((e) => { throw new Error(e)});
         setMuscleTypes((await _data).body.muscleTypes);
       }

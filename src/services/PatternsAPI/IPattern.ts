@@ -5,5 +5,5 @@ export interface Body {
 
 export interface IPattern {
   id: number;
-  body: Body
+  body: Body,
 };
