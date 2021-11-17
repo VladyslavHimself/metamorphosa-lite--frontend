@@ -10,6 +10,7 @@ import { IExcercise } from '../../src/services/ExcerciseListAPI/ExcerciseList.in
 import { TrainingListAPI } from '../../src/services/TrainingListAPI/TrainingListAPI.service';
 import { DateAPI } from '../../src/services/DateAPI/DateAPI.service';
 import { Button } from '../../src/components/Ui/Button/Button';
+import Head from 'next/head';
 
 const Training: NextPage = () => {
   const [excercises, setExcercises] = useState<IExcercise[]>();
@@ -53,6 +54,11 @@ const Training: NextPage = () => {
   }, [router.isReady, query.id]);
 
   return (
+    <>
+      <Head>
+        <title> M | Training </title>
+      </Head>
+      
       <div className={classes.training}>
         <span className={classes.training__date}>
           { new DateAPI().isPresentDay(trainingDate!) ? 'Today\'s training!' : trainingDate }
@@ -61,6 +67,8 @@ const Training: NextPage = () => {
         <hr />
         <ExcerciseList excercises={excercises} />
       </div>
+    </>
+      
   )
 };
 
