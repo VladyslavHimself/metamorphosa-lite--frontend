@@ -19,6 +19,7 @@ export const ExcerciseList = ({ excercises}: IProps) => (
             sets={excercise.sets}
             weight={excercise.weight}
             isCreate={excercise.isCreate}
+            muscleTypes={excercise.muscleTypes}
           />
         )
       }) : <p>You dont have any excercises here :)</p>
