@@ -8,16 +8,28 @@ import { Button } from '../../src/components/Ui/Button/Button';
 const AddPatternPage: NextPage = () => {
 
   const [excerciseName, setExcerciseName] = useState<string>('');
-  const [muscleTypes, setMuscleTypes] = useState<string[]>(['Legs', 'Back', 'Chest', 'Biceps', 'Triceps']);
+  const [muscleTypes, setMuscleTypes] = useState<string[]>([]);
 
+  const onChangeActionHandler = (e: React.ChangeEvent<HTMLInputElement>, muscle: string) => {
+    if (e.target.checked) {
+      console.log('added ' + muscle);
+      setMuscleTypes([
+        ...muscleTypes,
+        muscle
+      ]);
+    } else {
+      const filteredArray = muscleTypes.filter(item => item !== muscle);
+      setMuscleTypes(filteredArray);
+    }
+  }
 
   const columnRender = ([...muscles]) => {
     return (
       <div className="muscle-type-list__column">
         {
-          muscles.map(muscle => (
-            <div className={classes['muscle-type-list__checkbox']}>
-            <input type="checkbox" name="Legs" id="" />
+          muscles.map((muscle, i) => (
+            <div key={`m-${i}`} className={classes['muscle-type-list__checkbox']}>
+            <input type="checkbox" name={muscle} id={muscle} onChange={(e) => onChangeActionHandler(e, muscle)}/>
             <div className={classes['muscle-type-list__name']}>{muscle}</div>
           </div>
           ))
@@ -44,7 +56,7 @@ const AddPatternPage: NextPage = () => {
           </div>
           
           <div className={classes['muscle-type-list']}>
-            { columnRender(['Legs', 'Back', 'Chest']) }
+            { columnRender(['Legs', 'Back', 'Chest']) } 
             { columnRender(['Biceps', 'Triceps']) }
         </div>
         </div>
