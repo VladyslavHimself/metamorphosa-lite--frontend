@@ -1,0 +1,36 @@
+.pattern-config {
+
+}
+
+.excercise-name {
+
+}
+
+.muscle-type {
+  &__header {
+
+  }
+  
+}
+
+.muscle-type-list {
+  
+  display: flex;
+
+  justify-content: space-between;
+
+  &__checkbox {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+  }
+
+  &__name {
+    margin-left: 5px;
+    
+  }
+
+  &__column {
+
+  }
+}
