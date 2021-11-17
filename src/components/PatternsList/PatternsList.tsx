@@ -13,7 +13,7 @@ export const PatternsList = ({ trainingId }: IProps): JSX.Element => {
   const [patternsList, setPatternsList] = useState<IPattern[]>();
   const router = useRouter();
   const onAddNewPatternHandler = () => {
-    console.log('add new pattern...');
+    router.push('/add-pattern');
   }
 
   const onOpenPatternHandler = (id: number, name: string) => {
