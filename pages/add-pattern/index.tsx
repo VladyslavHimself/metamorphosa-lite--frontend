@@ -4,11 +4,14 @@ import { Wrapper } from '../../src/containers/Wrapper/Wrapper';
 import { Input } from '../../src/components/Ui/Input/Input';
 import classes from '../../styles/AddPatternPage.module.scss';
 import { Button } from '../../src/components/Ui/Button/Button';
+import { PatternsAPI } from '../../src/services/PatternsAPI/PatternsAPI.service';
+import { useRouter } from 'next/dist/client/router';
 
 const AddPatternPage: NextPage = () => {
 
   const [excerciseName, setExcerciseName] = useState<string>('');
   const [muscleTypes, setMuscleTypes] = useState<string[]>([]);
+  const router = useRouter();
 
   const onChangeActionHandler = (e: React.ChangeEvent<HTMLInputElement>, muscle: string) => {
     if (e.target.checked) {
@@ -39,7 +42,10 @@ const AddPatternPage: NextPage = () => {
   }
 
   const onCreatePatternHandler = () => {
-    console.log('create pattern...');
+    const patternApi = new PatternsAPI();
+
+    patternApi.createNewPattern(excerciseName, muscleTypes);
+    router.push('/patterns');
   }
 
   return (
