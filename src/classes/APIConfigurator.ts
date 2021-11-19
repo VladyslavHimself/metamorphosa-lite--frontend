@@ -1,6 +1,5 @@
 export default class APIConfigurator {
-
-  readonly _serverLink = 'https://meta.mcteaparty.fun/api';
+  readonly _serverLink = process.env.NEXT_PUBLIC_API;
   readonly _config = {
     headers: {
       Authorization: `Bearer ${this._getTokenFromLocalStorage()}`
