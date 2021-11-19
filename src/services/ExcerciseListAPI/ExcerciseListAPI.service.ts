@@ -3,10 +3,12 @@ import APIConfigurator from "../../classes/APIConfigurator";
 import { IExcercise } from "./ExcerciseList.interface";
 
 export class ExcerciseListAPI extends APIConfigurator {
-  
   constructor() {
     super();
   }  
+
+  excercises_api: string | undefined = process.env.NEXT_PUBLIC_EXCERCISES_API;
+  
   /**
    * Get excercises from Training, by id.
    * 
@@ -14,7 +16,7 @@ export class ExcerciseListAPI extends APIConfigurator {
    */
    public async getExcercisesFromTraining(trainingId: number): Promise<IExcercise[]> {
     try {
-      const response: AxiosResponse<IExcercise[]> = await axios.get<IExcercise[]>(`${this._serverLink}/excercises/${trainingId}`, this._config);
+      const response: AxiosResponse<IExcercise[]> = await axios.get<IExcercise[]>(`${this.excercises_api}/${trainingId}`, this._config);
       return response.data;
     } catch (error) {
       throw new Error('Can\'t get excercises from server!');
@@ -26,7 +28,7 @@ export class ExcerciseListAPI extends APIConfigurator {
   */
   public async addExcerciseToTraining(trainingId: number, data: any) {
     try {
-      axios.post(`${this._serverLink}/excercises/${trainingId}`, data, this._config);
+      axios.post(`${this.excercises_api}/${trainingId}`, data, this._config);
     } catch (error) {
       throw new Error('Can\'t create excercise!');
       
@@ -38,7 +40,7 @@ export class ExcerciseListAPI extends APIConfigurator {
    */
   public async deleteExcercise(excerciseId: number): Promise<void> {
     try {
-      await axios.delete(`${this._serverLink}/excercises/${excerciseId}`, this._config);
+      await axios.delete(`${this.excercises_api}/${excerciseId}`, this._config);
     } catch (error) {
       throw new Error('Can\'t delete excercise from server!');
     }
