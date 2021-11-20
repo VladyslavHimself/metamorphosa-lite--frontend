@@ -6,8 +6,6 @@ export class ExcerciseListAPI extends APIConfigurator {
   constructor() {
     super();
   }  
-
-  excercises_api: string | undefined = process.env.NEXT_PUBLIC_EXCERCISES_API;
   
   /**
    * Get excercises from Training, by id.
