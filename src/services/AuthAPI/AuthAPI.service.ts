@@ -13,9 +13,7 @@ export class AuthAPI extends APIConfigurator {
    * Otherwise returns new error.
    */
   public async auth ({email, password}: IUserData): Promise<boolean> {
-    const auth_api = process.env.NEXT_PUBLIC_AUTH_API_LOGIN;
-
-    return await axios.post(auth_api!, {
+    return await axios.post(process.env.NEXT_PUBLIC_AUTH_LOGIN!, {
       "email": email,
       "password": password
     }).then(data => {
