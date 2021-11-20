@@ -6,7 +6,6 @@ export class TrainingListAPI extends APIConfigurator {
   constructor() {
     super();
   }
-  trainings_api: string | undefined = process.env.NEXT_PUBLIC_TRAINING_API;
   /**
    * Get Training List from server.
    * 
@@ -15,7 +14,7 @@ export class TrainingListAPI extends APIConfigurator {
    */
   public async getTrainingList(): Promise<ITraining[]> {
     try {
-      const response: AxiosResponse<ITraining[]> = await axios.get<ITraining[]>(this.trainings_api!, this._config);
+      const response: AxiosResponse<ITraining[]> = await axios.get<ITraining[]>(process.env.NEXT_PUBLIC_GET_FIRST_30_TRAININGS!, this._config);
       return response.data;
     } catch (error) {
       throw new Error('Can\'t receive training list data from server!');
