@@ -24,7 +24,10 @@ export class PatternsAPI extends APIConfigurator {
    * getPatternById
    */
   public async getPatternById(id: number) {
-    const response: AxiosResponse<IPattern[]> = await axios.get(`${this._serverLink}/pattern/${id}`, this._config);
+    const response: AxiosResponse<IPattern[]> = await axios.get(
+      `${process.env.NEXT_PUBLIC_GET_PATTERN_BY_ID}/${id}`,
+       this._config
+       ); 
     return response.data;
   }
 
@@ -39,7 +42,7 @@ export class PatternsAPI extends APIConfigurator {
     }
 
     try {
-      axios.post(`${this._serverLink}/patterns/excercissss`, _data, this._config);
+      axios.post(process.env.NEXT_PUBLIC_CREATE_PATTERN!, _data, this._config);
     } catch (error) {
       throw new Error('Can\'t create new pattern!');
     }
@@ -51,7 +54,7 @@ export class PatternsAPI extends APIConfigurator {
   public async deletePattern(id: number) {
     
     try {
-      return await axios.delete(`${this._serverLink}/patterns/${id}`, this._config);
+      return await axios.delete(`${process.env.NEXT_PUBLIC_DELETE_PATTERN_BY_ID}/${id}`, this._config);
 
     } catch (error) {
       throw new Error('Cant delete pattern');
