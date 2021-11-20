@@ -5,15 +5,12 @@ export class PatternsAPI extends APIConfigurator {
   constructor() {
     super();
   };
-
-  patterns_api: string | undefined = process.env.NEXT_PUBLIC_PATTERNS_API;
-
   /**
    * getPatternsList
    */
   public async getPatternsList(): Promise<IPattern[]> {
     try {
-      const response: AxiosResponse<IPattern[]> = await axios.get(this.patterns_api!, this._config);
+      const response: AxiosResponse<IPattern[]> = await axios.get(process.env.NEXT_PUBLIC_GET_ALL_PATTERNS!, this._config);
       return response.data;
     } catch (error) {
       throw new Error('Can\'t get patterns from server!');
