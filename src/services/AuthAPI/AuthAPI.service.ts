@@ -19,7 +19,7 @@ export class AuthAPI extends APIConfigurator {
       "email": email,
       "password": password
     }).then(data => {
-      const token = data.data.token;
+      const token = data.data.accessToken;
       this._writeTokenToLocalStorage(token);
       return true;
     }).catch(error => {
