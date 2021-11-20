@@ -29,7 +29,7 @@ export class TrainingListAPI extends APIConfigurator {
    */
   public async removeTraining(trainingId: number): Promise<void> {
     try {
-      await axios.delete(`${this.trainings_api}/${trainingId}`, this._config);
+      await axios.delete(`${process.env.NEXT_PUBLIC_DELETE_TRAINING_BY_ID}/${trainingId}`, this._config);
     } catch (error) {
       throw new Error('Can\'t delete training from server!');
     }
@@ -44,7 +44,7 @@ export class TrainingListAPI extends APIConfigurator {
     };
 
     try {
-      await axios.post(this.trainings_api!, _data, this._config);
+      await axios.post(process.env.NEXT_PUBLIC_CREATE_TRAINING!, _data, this._config);
     } catch (error) {
       throw new Error('Can\'t create new training!');
     }
